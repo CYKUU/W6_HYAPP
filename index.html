@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API 호출 예제</title>
+</head>
+<body>
+    <button id="getDataButton">데이터 가져오기</button>
+    <p id="dataResult"></p>
+
+    <script>
+        const getDataButton = document.getElementById("getDataButton");
+        const dataResult = document.getElementById("dataResult");
+
+        getDataButton.addEventListener("click", () => {
+            // 서버의 API를 호출
+            fetch("/api/hi")
+                .then(response => response.json())
+                .then(data => {
+                    // 받아온 데이터를 p 태그에 출력
+                    dataResult.innerText = data.message;
+                })
+                .catch(error => {
+                    console.error("에러 발생:", error);
+                });
+        });
+    </script>
+</body>
+</html>
